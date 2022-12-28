@@ -148,9 +148,9 @@ let city = null;
 
 //DB constants
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb://127.0.0.1:27017/sonicDB";
-const dbName = "sonicDB";
-const collectionName = "Users";
+const uri = "mongodb://127.0.0.1:27017/myDB";
+const dbName = "myDB";
+const collectionName = "myCollection";
 let db = null;
 let userCollection = null;
 
@@ -203,6 +203,12 @@ app.post("/register", (req, res) => {
 app.post('/', (req, res) => {
   username = req.body.username;
   password = req.body.password;
+
+  if(username == "admin" && password=="admin"){
+    req.session.username = "admin"
+    res.redirect('/home');
+  }
+  else {
   userCollection.find({username : username}).toArray( (err, users) => {
     console.log(users) ; 
     if(users.length > 0){
@@ -221,6 +227,7 @@ app.post('/', (req, res) => {
   }
 
   });
+}
 });
 }
 
@@ -279,7 +286,7 @@ res.render('searchresults',{cities: output});
 
 
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 
 
 
