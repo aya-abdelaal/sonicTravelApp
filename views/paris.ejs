@@ -78,7 +78,14 @@
         It is known as the most romantic city in the world, and is home to some world famous sights that are constantly shown in travel magazines, movies, and other works of art. Paris, the capital of France, has a population of over two million people and is one of Europe's most-visited cities.
     </div>
     <div class="wanttogo">
-        <button id="wanttogo" class="btn btn-secondary ml-3">Add to Want-to-Go List</button>
+        <form method="post" action="/addWantToGo">
+        <input id="wanttogo" class="btn btn-secondary ml-3" type="submit" value="Add to Want-to-Go List" >
+        </form>
+
+    <% if(msg) { %>
+        <h2><%=msg %></h2>
+    <% } %>
+    
     </div>
     <div class="video">
         <iframe width="480" height="360" src="<%= video %>" frameBorder="0"></iframe>

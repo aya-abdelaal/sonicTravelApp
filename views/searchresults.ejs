@@ -38,5 +38,20 @@
             </form>
         </div>
     </nav>
+
+
+    <h2>Search results </h2>
+
+    <% if(cities.length > 0) { %>
+        <% cities.forEach(site =>{ %>
+            <h3> <a href="<%= site.title %>" > <%=  site.title %> </a> </h3>
+
+        <% }) %>
+        <% } %>
+
+    <% if(cities.length == 0) { %>
+        <h3> Destination not found </h3>
+
+    <%} %>
 </body>
 </html>
