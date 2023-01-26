@@ -192,7 +192,7 @@ app.post("/register", (req, res) => {
   }
   else {
     msg = "Username and password can't be empty";
-    res.redirect('/');
+    res.redirect('/registration');
   }
 });
 
